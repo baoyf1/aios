@@ -270,16 +270,19 @@ AIOS（AI Agent Operating System）是一个面向商业化垂直领域的智能
 
 ## 技术栈
 
-| 技术 | 用途 |
-|------|------|
-| C++ | 核心运行时 |
-| Python | Agent开发 |
-| Win32 API | Windows系统集成 |
-| LangChain/LangGraph | 工作流编排 |
-| Ollama | 本地LLM部署 |
-| FastAPI | API服务器 |
-| WiX Toolset | 安装包制作 |
-| pytest | 测试框架 |
+| 技术 | 用途 | 说明 |
+|------|------|------|
+| C++17 | 核心运行时 | 主流稳定的C++标准，广泛支持 |
+| Python 3.10+ | Agent开发 | 稳定版本，拥有丰富的生态系统 |
+| Win32 API | Windows系统集成 | Windows平台的核心API，稳定可靠 |
+| LangChain | 工作流编排 | 成熟的LLM应用框架，社区活跃 |
+| Ollama | 本地LLM部署 | 稳定的本地LLM运行时，支持多种模型 |
+| FastAPI | API服务器 | 高性能、稳定的Python Web框架 |
+| WiX Toolset | 安装包制作 | Windows平台主流的安装包制作工具 |
+| pytest | 测试框架 | Python生态中最主流的测试框架 |
+| Visual Studio 2022 | 开发环境 | 主流的Windows开发IDE，支持C++和Python |
+| CMake | 构建系统 | 跨平台构建工具，稳定可靠 |
+| YAML | 配置文件格式 | 广泛使用的配置文件格式，易于读写 |
 
 ## 开发注意事项
 
