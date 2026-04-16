@@ -2,7 +2,20 @@
 
 ## 1. 向量存储
 
-### 1.1 向量数据管理
+### 1.1 框架集成
+- **init_vector_store**: 初始化向量存储
+  - 参数: config (配置参数, 支持本地/远程模型)
+  - 返回: 存储实例
+
+- **get_vector_store_config**: 获取向量存储配置
+  - 参数: 无
+  - 返回: 配置信息
+
+- **update_vector_store_config**: 更新向量存储配置
+  - 参数: config (新配置)
+  - 返回: 是否成功
+
+### 1.2 向量数据管理
 - **store_vector**: 存储向量数据
   - 参数: data (数据), embedding (向量), metadata (元数据), tags (标签)
   - 返回: 记忆ID
@@ -103,9 +116,52 @@
   - 参数: 无
   - 返回: 优化结果
 
+### 2.4 用户驱动搜索
+- **search_by_user_question**: 根据用户问题搜索记忆
+  - 参数: question (用户问题), top_k (返回数量)
+  - 返回: 搜索结果
+
+- **search_user_preferences**: 搜索用户喜好
+  - 参数: agent_id (Agent ID), top_k (返回数量)
+  - 返回: 用户喜好列表
+
+- **search_by_agent**: Agent自主搜索
+  - 参数: agent_id (Agent ID), query (搜索查询), top_k (返回数量)
+  - 返回: 搜索结果
+
 ## 3. 记忆管理
 
-### 3.1 记忆操作
+### 3.1 配置管理
+- **load_config**: 加载配置文件
+  - 参数: config_path (配置文件路径)
+  - 返回: 配置对象
+
+- **save_config**: 保存配置文件
+  - 参数: config (配置对象), config_path (配置文件路径)
+  - 返回: 是否成功
+
+- **get_config**: 获取当前配置
+  - 参数: 无
+  - 返回: 配置对象
+
+- **update_config**: 更新配置
+  - 参数: config_updates (配置更新)
+  - 返回: 是否成功
+
+### 3.2 记忆隔离
+- **create_agent_memory_space**: 为Agent创建记忆空间
+  - 参数: agent_id (Agent ID)
+  - 返回: 记忆空间ID
+
+- **get_agent_memory_space**: 获取Agent的记忆空间
+  - 参数: agent_id (Agent ID)
+  - 返回: 记忆空间对象
+
+- **switch_memory_space**: 切换记忆空间
+  - 参数: memory_space_id (记忆空间ID)
+  - 返回: 是否成功
+
+### 3.3 记忆操作
 - **create_memory**: 创建记忆
   - 参数: data (数据), metadata (元数据), tags (标签)
   - 返回: 记忆ID
@@ -226,6 +282,41 @@
 - **get_important_memories**: 获取重要记忆
   - 参数: min_importance (最小重要性), top_k (返回数量)
   - 返回: 重要记忆列表
+
+### 4.5 计数引用系统
+- **increment_reference_count**: 增加引用计数
+  - 参数: memory_id (记忆ID), agent_id (Agent ID)
+  - 返回: 新的引用计数
+
+- **get_reference_count**: 获取引用计数
+  - 参数: memory_id (记忆ID)
+  - 返回: 引用计数
+
+- **get_top_referenced_memories**: 获取引用最多的记忆
+  - 参数: top_k (返回数量)
+  - 返回: 记忆列表
+
+### 4.6 用户喜好总结
+- **summarize_user_preferences**: 总结用户喜好
+  - 参数: agent_id (Agent ID), max_length (最大长度)
+  - 返回: 用户喜好总结
+
+- **store_user_preferences**: 存储用户喜好
+  - 参数: agent_id (Agent ID), preferences (喜好内容)
+  - 返回: 是否成功
+
+- **get_user_preferences**: 获取用户喜好
+  - 参数: agent_id (Agent ID)
+  - 返回: 用户喜好
+
+### 4.7 提示词注入
+- **inject_preferences_into_prompt**: 将用户喜好注入提示词
+  - 参数: prompt (原始提示词), agent_id (Agent ID), max_length (最大长度)
+  - 返回: 增强后的提示词
+
+- **optimize_prompt_with_context**: 使用上下文优化提示词
+  - 参数: prompt (原始提示词), context (上下文信息)
+  - 返回: 优化后的提示词
 
 ## 5. 错误处理
 
